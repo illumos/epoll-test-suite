@@ -6,7 +6,8 @@
 
 #include "common.h"
 
-int main(int argc, char **argv)
+int
+main(int argc, char **argv)
 {
 	int pipe_fd[2], dup_fd[2];
 	int res, efd1, efd2;
@@ -44,12 +45,7 @@ int main(int argc, char **argv)
 	ev.events = EPOLLIN;
 	ev.data.fd = efd2;
 	if (epoll_ctl(efd1, EPOLL_CTL_ADD, efd2, &ev) < 0) {
-		/*
-		 * The SunOS version used to yield ELOOP, but in order to stay
-		 * within the bounds of the interface described in the Linux man page, it is
-		 * translated into EINVAL.
-		 */
-		test_equal(errno, EINVAL);
+		test_equal(errno, ELOOP);
 	} else {
 		test_fail("created epoll loop");
 	}

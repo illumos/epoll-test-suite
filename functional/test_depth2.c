@@ -8,7 +8,8 @@
 
 #define	T_TARGET_DEPTH	5
 
-int main(int argc, char **argv)
+int
+main(int argc, char **argv)
 {
 	int pipe_fd[2], test_fd[T_TARGET_DEPTH + 1];
 	int efd, res, i;

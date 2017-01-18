@@ -9,7 +9,8 @@
 #define	T_MAX_DEPTH	8
 #define	T_TARGET_DEPTH	5
 
-int main(int argc, char **argv)
+int
+main(int argc, char **argv)
 {
 	int pipefd[2], testfd[T_MAX_DEPTH], pfd, i;
 	struct epoll_event ev;
