@@ -18,7 +18,12 @@ writer_func(void *args) {
 	pthread_mutex_lock(&lock);
 	pthread_mutex_unlock(&lock);
 
-	/* allow the main thread time to enter the epoll_ctl */
+	/*
+	 * Allow the main thread time to enter the epoll_ctl.  Strictly speaking,
+	 * this does have the potential to race.  There doesn't appear to be a
+	 * convenient way to ensure proper ordering here.  The sleep should be
+	 * adequate for all but the most pathological cases.
+	 */
 	usleep(1000);
 
 	write(evfd, &val, sizeof (val));

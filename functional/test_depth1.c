@@ -39,7 +39,6 @@ main(int argc, char **argv)
 
 		if (res == 0) {
 			if (i >= T_TARGET_DEPTH) {
-				// too deep
 				test_fail("too deep");
 			} else {
 				test_pass();
