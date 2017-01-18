@@ -1,7 +1,7 @@
 
 CFLAGS	= -fno-omit-frame-pointer
 TESTS	= $(PLAIN_TESTS) $(THREAD_TESTS)
-PLAIN_TESTS	= test_depth1 test_depth2 test_loop test_nested1
+PLAIN_TESTS	= test_depth1 test_depth2 test_loop test_nested1 test_nested_et1
 THREAD_TESTS	= test_et1
 COMMON	= common.o
 
