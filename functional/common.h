@@ -5,6 +5,7 @@ extern void test_init(int, char **);
 extern void test_fail(char *, ...);
 extern void test_pass();
 extern void test_equal(int, int);
+extern void test_ok(int, char *);
 extern void test_fatal(char *, ...);
 extern void test_done();
 extern char *g_execname;

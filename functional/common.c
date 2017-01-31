@@ -58,6 +58,16 @@ test_equal(int a, int b) {
 }
 
 void
+test_ok(int cond, char *msg)
+{
+	if (cond) {
+		test_pass();
+	} else {
+		test_fail(msg);
+	}
+}
+
+void
 test_done()
 {
 	exit(g_result);
