@@ -103,10 +103,10 @@ main(int argc, char **argv)
 	test_ok(duration_within_range(before, after, 450, 550),
 	    "exceeded timeout interval");
 
-	/* clear time (it should be uneeded) */
+	/* clear timer (it should be uneeded) */
 	itv.it_value.tv_sec = 0;
 	itv.it_value.tv_usec = 0;
-	clock_gettime(CLOCK_REALTIME, &before);
+	test_equal(setitimer(ITIMER_REAL, &itv, NULL), 0);
 
 	test_done();
 }
