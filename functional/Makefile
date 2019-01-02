@@ -11,6 +11,9 @@ UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)
     CFLAGS += -D_OS_LINUX
 endif
+ifeq ($(UNAME), SunOS)
+    CFLAGS += -D_OS_SUNOS
+endif
 
 all: $(TESTS)
 
