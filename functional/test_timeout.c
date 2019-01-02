@@ -37,6 +37,7 @@ main(int argc, char **argv)
 	struct epoll_event ev;
 	struct itimerval itv;
 	struct timespec before, after;
+	struct sigaction sa;
 
 	test_init(argc, argv);
 
@@ -57,8 +58,11 @@ main(int argc, char **argv)
 	test_equal(epoll_wait(efd, &ev, 1, 0), 0);
 
 	/* setup appropriate noop handler for SIGALRM */
-	if (signal(SIGALRM, alarm_handler) == SIG_ERR) {
-		test_fatal("signal(sigalarm) failed");
+	sa.sa_handler = alarm_handler;
+	sa.sa_flags = 0;
+	sigemptyset(&sa.sa_mask);
+	if (sigaction(SIGALRM, &sa, NULL) != 0) {
+		test_fatal("sigaction(SIGALRM) failed");
 	}
 
 	clock_gettime(CLOCK_REALTIME, &before);
