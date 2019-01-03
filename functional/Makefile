@@ -22,6 +22,10 @@ $(TESTS): % : %.o $(COMMON)
 $(THREAD_TESTS:%=%.o) $(COMMON): CFLAGS += -pthread
 $(THREAD_TESTS): LDFLAGS += -pthread
 
+run:
+	for n in $(TESTS); do ./$$n; done
+
 clean:
 	rm -f $(TESTS) *.o
-.PHONEY: clean
+
+.PHONY: clean run
