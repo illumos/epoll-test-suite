@@ -6,6 +6,7 @@
 
 /*
  * Copyright 2019 Joyent, Inc.
+ * Copyright 2020 Oxide Computer Company
  */
 
 #ifndef _COMMON_H_
@@ -13,6 +14,7 @@
 
 extern void test_init(int, char **);
 extern void test_fail(char *, ...);
+extern void test_warn(char *, ...);
 extern void test_pass();
 extern void test_equal(int, int);
 extern void test_ok(int, char *);

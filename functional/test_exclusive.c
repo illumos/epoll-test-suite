@@ -35,6 +35,12 @@ main(int argc, char **argv)
 		test_fatal("epoll_create1()");
 	}
 
+#if !defined(EPOLLEXCLUSIVE)
+	/* Handle older systems where EPOLLEXCLUSIVE is not defined */
+#define	EPOLLEXCLUSIVE	(1UL << 28)
+	test_warn("EPOLLEXCLUSIVE not defined");
+#endif
+
 	epev.events = EPOLLIN|EPOLLEXCLUSIVE;
 	epev.data.fd = pipefd[0];
 

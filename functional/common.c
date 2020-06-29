@@ -6,6 +6,7 @@
 
 /*
  * Copyright 2019 Joyent, Inc.
+ * Copyright 2020 Oxide Computer Company
  */
 
 #include <stdio.h>
@@ -42,6 +43,16 @@ test_pass()
 	g_testnum++;
 }
 
+void
+test_warn(char *reason, ...)
+{
+	va_list ap;
+	printf("%s\t%d\tTWARN: ", g_testname, g_testnum);
+
+	va_start(ap, reason);
+	vprintf(reason, ap);
+	printf("\n");
+}
 
 void
 test_fail(char *reason, ...)
