@@ -23,6 +23,7 @@ ifeq ($(UNAME), Linux)
 endif
 ifeq ($(UNAME), SunOS)
     CFLAGS += -D_OS_SUNOS
+    PLAIN_TESTS	+=	test_illumos
 endif
 
 all: $(TESTS)
